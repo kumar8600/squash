@@ -1,0 +1,26 @@
+project(Squash)
+cmake_minimum_required(VERSION 2.8)
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
+
+find_package( OpenGL REQUIRED )
+find_package( GLFW3 REQUIRED )
+find_package( GLM REQUIRED )
+find_package( glbinding REQUIRED )
+find_package( Bullet REQUIRED )
+find_package( entityx REQUIRED )
+
+include_directories(${OPENGL_INCLUDE_DIR})
+include_directories(${GLFW3_INCLUDE_DIRS})
+include_directories(${GLM_INCLUDE_DIRS})
+include_directories(${GLBINDING_INCLUDE_DIRS})
+include_directories(${BULLET_INCLUDE_DIRS})
+include_directories(${ENTITYX_INCLUDE_DIRS})
+
+aux_source_directory(. SRC_LIST)
+add_executable(${PROJECT_NAME} ${SRC_LIST})
+target_link_libraries( ${PROJECT_NAME} ${OPENGL_gl_LIBRARY} )
+target_link_libraries( ${PROJECT_NAME} ${GLFW3_LIBRARIES} )
+target_link_libraries( ${PROJECT_NAME} ${GLBINDING_LIBRARIES} )
+target_link_libraries( ${PROJECT_NAME} ${BULLET_LIBRARIES} )
+target_link_libraries( ${PROJECT_NAME} ${ENTITYX_LIBRARIES} )
