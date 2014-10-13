@@ -17,7 +17,7 @@ include_directories(${GLBINDING_INCLUDE_DIRS})
 include_directories(${BULLET_INCLUDE_DIRS})
 include_directories(${ENTITYX_INCLUDE_DIRS})
 
-aux_source_directory(. SRC_LIST)
+file(GLOB_RECURSE SRC_LIST "src/*.cpp")
 add_executable(${PROJECT_NAME} ${SRC_LIST})
 target_link_libraries( ${PROJECT_NAME} ${OPENGL_gl_LIBRARY} )
 target_link_libraries( ${PROJECT_NAME} ${GLFW3_LIBRARIES} )
